@@ -98,7 +98,7 @@ function removeUnit(value: string, ...args: [pattern: RegExp, factor: number][])
   return null;
 }
 
-export const ResistanceValueType: AValueType<ResistanceValue> = {
+export const OhmsValueType: AValueType<OhmsValue> = {
   id: 'e4d63822-832e-4294-b1ff-0d983364528e',
   parse: value => {
     const n = removeUnit(
@@ -107,12 +107,12 @@ export const ResistanceValueType: AValueType<ResistanceValue> = {
       [/(kilo|k) ?(ohms?|Ω)?/gi, 1000],
       [/(mega|m) ?(ohms?|Ω)?/gi, 1000000],
     );
-    return n === null ? n : new ResistanceValue(n);
+    return n === null ? n : new OhmsValue(n);
   },
 };
 
-export class ResistanceValue extends NumberValue {
-  type = ResistanceValueType;
+export class OhmsValue extends NumberValue {
+  type = OhmsValueType;
   format(): string {
     if (this.value < 1000) {
       return this.value + 'Ω';
@@ -124,7 +124,7 @@ export class ResistanceValue extends NumberValue {
   }
 }
 
-export const CapacitanceValueType: AValueType<CapacitanceValue> = {
+export const FaradsValueType: AValueType<FaradsValue> = {
   id: 'f2f071a6-bdf7-40d0-a472-1351c5cd8609',
   parse: value => {
     const n = removeUnit(
@@ -134,12 +134,12 @@ export const CapacitanceValueType: AValueType<CapacitanceValue> = {
       [/(u|µ|micro)? ?f(arads?)?/gi, 1e-6],
       [/m|(illi)? ?f(arads?)?/gi, 1e-3],
     );
-    return n === null ? n : new CapacitanceValue(n);
+    return n === null ? n : new FaradsValue(n);
   },
 };
 
-export class CapacitanceValue extends NumberValue {
-  type = CapacitanceValueType;
+export class FaradsValue extends NumberValue {
+  type = FaradsValueType;
   format(): string {
     if (this.value < 1e-9) {
       return this.value / 1e-12 + 'pF';
@@ -158,8 +158,8 @@ export const AValueTypeMap = new Map([
   [NumberValueType.id, NumberValueType],
   [ChoiceValueType.id, ChoiceValueType],
   [PercentValueType.id, PercentValueType],
-  [ResistanceValueType.id, ResistanceValueType],
-  [CapacitanceValueType.id, CapacitanceValueType],
+  [OhmsValueType.id, OhmsValueType],
+  [FaradsValueType.id, FaradsValueType],
 ]);
 
 export class Attribute<TValue extends AValue = AValue> {
@@ -179,9 +179,9 @@ export class Attribute<TValue extends AValue = AValue> {
 export const ATTRIBUTES = {
   resistance: new Attribute(
     '4bea39b1-ee2f-41ae-bcb3-da80c704f6c4',
-    ResistanceValueType,
+    OhmsValueType,
     'Resistance',
-    [0, 1, 5.6, 240, 680, 1000, 1500, 30000, 270000, 1000000].map(r => new ResistanceValue(r)),
+    [0, 1, 5.6, 240, 680, 1000, 1500, 30000, 270000, 1000000].map(r => new OhmsValue(r)),
   ),
   tolerance: new Attribute(
     '11caa502-0b76-4326-9ad5-3dbfbb5ac038',
@@ -191,9 +191,9 @@ export const ATTRIBUTES = {
   ),
   capacitance: new Attribute(
     '6c5f6fd6-8988-4ae7-b28c-8d8bb03721d3',
-    CapacitanceValueType,
+    FaradsValueType,
     'Capacitance',
-    [1e-12, 1e-9, 0.000001, 0.001].map(c => new CapacitanceValue(c)),
+    [1e-12, 1e-9, 0.000001, 0.001].map(c => new FaradsValue(c)),
   ),
   partNumber: new Attribute('41aa1373-17e9-404b-af7b-0098440d0956', StringValueType, 'Part Number'),
   mount: new Attribute('0cbcb921-8580-4fec-92b9-562fe9c05f01', ChoiceValueType, 'Mount', [
