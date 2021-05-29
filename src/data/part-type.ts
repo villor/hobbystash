@@ -15,16 +15,12 @@ export const PART_TYPES: PartType[] = [
       ATTRIBUTES.resistance,
       ATTRIBUTES.tolerance,
       ATTRIBUTES.mount,
-      ...GENERIC_ATTRIBUTES
+      ...GENERIC_ATTRIBUTES,
     ],
   },
   {
     id: '06aea61c-cc47-4884-bbd1-8c10d50817dc',
     name: 'Capacitor',
-    attributes: [
-      ATTRIBUTES.capacitance,
-      ATTRIBUTES.mount,
-      ...GENERIC_ATTRIBUTES
-    ],
+    attributes: [ATTRIBUTES.capacitance, ATTRIBUTES.mount, ...GENERIC_ATTRIBUTES],
   },
 ];

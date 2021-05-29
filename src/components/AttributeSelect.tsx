@@ -17,19 +17,24 @@ function attributeSearch(attributes: Attribute[], query: string): PartAttribute[
 
   query = query.trim().toLowerCase();
 
-  const parseResults = query.length === 0 ? [] : attributes
-    .reduce((results, attribute) => {
-      const value = attribute.type.parse(query);
-      if (value) {
-        results.push({ attribute, value });
-      }
-      return results;
-    }, [] as PartAttribute[]);
+  const parseResults =
+    query.length === 0
+      ? []
+      : attributes.reduce((results, attribute) => {
+          const value = attribute.type.parse(query);
+          if (value) {
+            results.push({ attribute, value });
+          }
+          return results;
+        }, [] as PartAttribute[]);
 
-  const suggestionResults = attributes
-    .flatMap(attribute => attribute.suggestions
-      .filter(suggestion => (attribute.name + ' ' + suggestion.format()).toLowerCase().includes(query))
-      .map(suggestion => ({ attribute, value: suggestion })));
+  const suggestionResults = attributes.flatMap(attribute =>
+    attribute.suggestions
+      .filter(suggestion =>
+        (attribute.name + ' ' + suggestion.format()).toLowerCase().includes(query),
+      )
+      .map(suggestion => ({ attribute, value: suggestion })),
+  );
 
   return parseResults.concat(suggestionResults);
 }
@@ -42,19 +47,26 @@ interface AttributeSelectProps {
   inputRef?: React.Ref<any>;
 }
 
-const AttributeSelect: FunctionComponent<AttributeSelectProps> = (
-  { partType, attributeValues, onChange, className, inputRef }
-) => {
+const AttributeSelect: FunctionComponent<AttributeSelectProps> = ({
+  partType,
+  attributeValues,
+  onChange,
+  className,
+  inputRef,
+}) => {
   const [searchResult, setSearchResult] = useState<PartAttribute[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
-    if (partType === null) { setSearchResult([]); }
-    else {
+    if (partType === null) {
+      setSearchResult([]);
+    } else {
       setSearchResult(
-        attributeSearch(partType.attributes
-          .filter(a => attributeValues.findIndex(b => b.attribute === a) === -1),
-        searchQuery));
+        attributeSearch(
+          partType.attributes.filter(a => attributeValues.findIndex(b => b.attribute === a) === -1),
+          searchQuery,
+        ),
+      );
     }
   }, [partType, searchQuery, attributeValues]);
 
@@ -70,13 +82,8 @@ const AttributeSelect: FunctionComponent<AttributeSelectProps> = (
       autoHighlight
       disabled={partType === null}
       onInputChange={(_e, value) => setSearchQuery(value)}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          variant="outlined"
-          label="Attributes"
-          inputRef={inputRef}
-        />
+      renderInput={params => (
+        <TextField {...params} variant="outlined" label="Attributes" inputRef={inputRef} />
       )}
     />
   );

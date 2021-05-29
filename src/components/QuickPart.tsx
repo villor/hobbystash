@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { createStyles, Paper, WithStyles, withStyles, TextField, Button } from "@material-ui/core";
+import React, { useState, useRef } from 'react';
+import { createStyles, Paper, WithStyles, withStyles, TextField, Button } from '@material-ui/core';
 
 import type { PartType } from '../data/part-type';
 import type { AValue } from '../data/attribute';
@@ -17,7 +17,7 @@ const styles = createStyles({
   },
   count: {
     width: 100,
-  }
+  },
 });
 
 type QuickPartProps = WithStyles<typeof styles>;
@@ -33,14 +33,14 @@ const QuickPart: React.FunctionComponent<QuickPartProps> = ({ classes }) => {
   const onPartTypeChange = (newPartType: PartType | null) => {
     const oldPartType = partType;
     setPartType(newPartType);
-    
+
     if (newPartType === null) {
       setAttributeValues([]);
       return;
     } else if (oldPartType !== null) {
-      setAttributeValues(attributeValues.filter(
-        av => newPartType.attributes.includes(av.attribute)
-      ));
+      setAttributeValues(
+        attributeValues.filter(av => newPartType.attributes.includes(av.attribute)),
+      );
     }
 
     setTimeout(() => {
@@ -69,15 +69,12 @@ const QuickPart: React.FunctionComponent<QuickPartProps> = ({ classes }) => {
           inputRef={countInput}
           disabled={partType === null}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          disableElevation
-          disabled={partType === null}
-        >OK</Button>
+        <Button variant="contained" color="primary" disableElevation disabled={partType === null}>
+          OK
+        </Button>
       </Paper>
     </form>
   );
-}
+};
 
 export default withStyles(styles)(QuickPart);

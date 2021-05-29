@@ -25,7 +25,12 @@ interface PartTypeSelectProps extends WithStyles<typeof styles> {
   autoFocus: boolean;
 }
 
-const PartTypeSelect: React.FunctionComponent<PartTypeSelectProps> = ({ value, onChange, classes, autoFocus }) => 
+const PartTypeSelect: React.FunctionComponent<PartTypeSelectProps> = ({
+  value,
+  onChange,
+  classes,
+  autoFocus,
+}) => (
   <Autocomplete
     className={classes.root}
     options={PART_TYPES}
@@ -34,26 +39,27 @@ const PartTypeSelect: React.FunctionComponent<PartTypeSelectProps> = ({ value, o
     }}
     autoHighlight
     getOptionLabel={option => option.name}
-    renderOption={option =>
+    renderOption={option => (
       <React.Fragment>
-        <img src="/logo192.png" alt=''></img>
+        <img src="/logo192.png" alt=""></img>
         {option.name}
       </React.Fragment>
-    }
-    renderInput={params =>
+    )}
+    renderInput={params => (
       <TextField
         {...params}
         label="Part type"
         variant="outlined"
         inputProps={{
           ...params.inputProps,
-          autoComplete: 'new-password'
+          autoComplete: 'new-password',
         }}
         autoFocus={autoFocus}
       />
-    }
+    )}
     value={value}
     onChange={(_e, value) => onChange(value)}
   />
+);
 
 export default withStyles(styles)(PartTypeSelect);
