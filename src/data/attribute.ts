@@ -129,10 +129,10 @@ export const FaradsValueType: AValueType<FaradsValue> = {
   parse: value => {
     const n = removeUnit(
       value,
-      [/p|(ico)? ?f(arads?)?/gi, 1e-12],
-      [/n|(ano)? ?f(arads?)?/gi, 1e-9],
+      [/p(ico)? ?f(arads?)?/gi, 1e-12],
+      [/n(ano)? ?f(arads?)?/gi, 1e-9],
       [/(u|µ|micro)? ?f(arads?)?/gi, 1e-6],
-      [/m|(illi)? ?f(arads?)?/gi, 1e-3],
+      [/m(illi)? ?f(arads?)?/gi, 1e-3],
     );
     return n === null ? n : new FaradsValue(n);
   },
