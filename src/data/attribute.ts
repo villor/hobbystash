@@ -6,6 +6,7 @@ export interface AValueType<T extends AValue = AValue> {
 }
 
 export interface AValue {
+  type: AValueType;
   format: () => string;
 }
 
@@ -15,6 +16,7 @@ export const StringValueType: AValueType<StringValue> = {
 };
 
 export class StringValue implements AValue {
+  type = StringValueType;
   value: string;
 
   constructor(value: string) {
@@ -35,6 +37,7 @@ export const NumberValueType: AValueType<NumberValue> = {
 }
 
 export class NumberValue implements AValue {
+  type = NumberValueType;
   value: number;
 
   constructor(value: number) {
@@ -56,6 +59,7 @@ export const ChoiceValueType: AValueType<ChoiceValue> = {
 }
 
 export class ChoiceValue implements AValue {
+  type = ChoiceValueType;
   choiceId: string;
   label: string;
 
@@ -78,6 +82,7 @@ export const PercentValueType: AValueType<PercentValue> = {
 }
 
 export class PercentValue extends NumberValue {
+  type = PercentValueType;
   format(): string {
     return super.format() + '%';
   }
@@ -107,6 +112,7 @@ export const ResistanceValueType: AValueType<ResistanceValue> = {
 }
 
 export class ResistanceValue extends NumberValue {
+  type = ResistanceValueType;
   format(): string {
     if (this.value < 1000) {
       return this.value + 'Ω';
@@ -132,6 +138,7 @@ export const CapacitanceValueType: AValueType<CapacitanceValue> = {
 }
 
 export class CapacitanceValue extends NumberValue {
+  type = CapacitanceValueType;
   format(): string {
     if (this.value < 1e-9) {
       return this.value / 1e-12 + "pF";
