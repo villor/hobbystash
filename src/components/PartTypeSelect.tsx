@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { createStyles, withStyles, WithStyles } from '@material-ui/core/styles';
 import type { PartType } from '../data/part-type';
-import { PART_TYPES } from '../data/part-type';
+import { PartTypes } from '../data/part-type';
 
 const styles = createStyles({
   root: {
@@ -33,7 +33,7 @@ const PartTypeSelect: React.FunctionComponent<PartTypeSelectProps> = ({
 }) => (
   <Autocomplete
     className={classes.root}
-    options={PART_TYPES}
+    options={PartTypes}
     classes={{
       option: classes.option,
     }}

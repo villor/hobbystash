@@ -3,11 +3,10 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 
-import type { Attribute } from '../data/attribute';
+import type { Attribute, AttributeValue } from '../data/attribute';
 import type { PartType } from '../data/part-type';
-import type { PartAttribute } from '../data/part-description';
 
-function attributeSearch(attributes: Attribute[], query: string): PartAttribute[] {
+function attributeSearch(attributes: Attribute[], query: string): AttributeValue[] {
   // TODO: Improvements
   //  - Fuzzy search
   //  - AValueType.parse() return more than one possible value?
@@ -26,7 +25,7 @@ function attributeSearch(attributes: Attribute[], query: string): PartAttribute[
             results.push({ attribute, value });
           }
           return results;
-        }, [] as PartAttribute[]);
+        }, [] as AttributeValue[]);
 
   const suggestionResults = attributes.flatMap(attribute =>
     attribute.suggestions
@@ -41,8 +40,8 @@ function attributeSearch(attributes: Attribute[], query: string): PartAttribute[
 
 interface AttributeSelectProps {
   partType: PartType | null;
-  attributeValues: PartAttribute[];
-  onChange?: (value: PartAttribute[]) => void;
+  attributeValues: AttributeValue[];
+  onChange?: (value: AttributeValue[]) => void;
   className?: string;
   inputRef?: React.Ref<any>;
 }
@@ -54,7 +53,7 @@ const AttributeSelect: FunctionComponent<AttributeSelectProps> = ({
   className,
   inputRef,
 }) => {
-  const [searchResult, setSearchResult] = useState<PartAttribute[]>([]);
+  const [searchResult, setSearchResult] = useState<AttributeValue[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {

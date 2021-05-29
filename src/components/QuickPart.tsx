@@ -2,8 +2,7 @@ import React, { useState, useRef } from 'react';
 import { createStyles, Paper, WithStyles, withStyles, TextField, Button } from '@material-ui/core';
 
 import type { PartType } from '../data/part-type';
-import type { AValue } from '../data/attribute';
-import type { PartAttribute } from '../data/part-description';
+import type { AttributeValue } from '../data/attribute';
 import PartTypeSelect from './PartTypeSelect';
 import AttributeSelect from './AttributeSelect';
 
@@ -24,7 +23,7 @@ type QuickPartProps = WithStyles<typeof styles>;
 
 const QuickPart: React.FunctionComponent<QuickPartProps> = ({ classes }) => {
   const [partType, setPartType] = useState<PartType | null>(null);
-  const [attributeValues, setAttributeValues] = useState<PartAttribute<AValue>[]>([]);
+  const [attributeValues, setAttributeValues] = useState<AttributeValue[]>([]);
   const [count, setCount] = useState<number>(0);
 
   const attrInput = useRef<HTMLInputElement>();
