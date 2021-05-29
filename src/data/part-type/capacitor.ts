@@ -8,7 +8,7 @@ import {
   ChoiceValue,
 } from '../attribute';
 
-const resistor: PartType = {
+const capacitor: PartType = {
   id: '9ee9ea1b-2478-4624-a3c7-8744d211e5a2',
   name: 'Capacitor',
   attributes: [
@@ -24,7 +24,7 @@ const resistor: PartType = {
     ]),
     ...GenericAttributes,
   ],
-  icon: () => 'resistor.png',
+  icon: () => 'capacitor.png',
 };
 
-export default resistor;
+export default capacitor;
