@@ -1,9 +1,9 @@
 {
   "name": "hobbystash-app",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "proxy": "http://localhost:4000",
-  "dependencies": {
+  "devDependencies": {
     "@fontsource/roboto": "^4.3.0",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",

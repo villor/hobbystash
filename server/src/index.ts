@@ -7,7 +7,7 @@ const app = express();
 const PORT = 4000;
 
 // Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, '/../../app/build')));
 
 // An api endpoint that returns a short list of items
 app.get('/api/attributeIds', (_, res) => {
@@ -17,7 +17,7 @@ app.get('/api/attributeIds', (_, res) => {
 
 // Handles any requests that don't match the ones above
 app.get('*', (_, res) => {
-  res.sendFile(path.join(__dirname + '/client/index.html'));
+  res.sendFile(path.join(__dirname + '/../../app/build/index.html'));
 });
 
 app.listen(PORT, () => {
