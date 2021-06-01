@@ -9,6 +9,7 @@
     "server": "yarn workspace hobbystash-server",
     "app": "yarn workspace hobbystash-app",
     "shared": "yarn workspace hobbystash-shared",
+    "build": "yarn shared build && yarn app build && yarn server build",
     "start": "concurrently -n shared,server,app \"yarn shared watch\" \"yarn server start\" \"yarn app start\"",
     "format": "prettier --write ./app/src && prettier --write ./server/src && prettier --write ./shared/src"
   },
