@@ -16,6 +16,6 @@ jobs:
         with:
           node-version: '14'
       - name: Install dependencies
-        run: yarn install --froze-lockfile
+        run: yarn install --frozen-lockfile
       - name: Build projects
         run: sh build.sh
