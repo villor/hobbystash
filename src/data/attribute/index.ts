@@ -50,6 +50,15 @@ export * from './ohm';
 export * from './percent';
 export * from './string';
 
-export const GenericAttributes = [
-  new Attribute('41aa1373-17e9-404b-af7b-0098440d0956', StringValueType, 'Part Number'),
-];
+export const BuiltInAttributeIds = {
+  // Generic
+  partNumber: '41aa1373-17e9-404b-af7b-0098440d0956',
+  manufacturer: '1db70e60-2fa5-438e-a18e-178e9d337a23',
+  description: '2765f0ed-a813-43f4-a921-7f5b21612a4f',
+
+  // Resistor
+  resistance: 'b872848b-ba1e-43b7-af68-86a601c8731c',
+
+  // Capacitor
+  capacitance: '2febe109-c9a7-4696-bc66-298f1dc25e3e',
+};

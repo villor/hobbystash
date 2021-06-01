@@ -4,7 +4,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 
 import type { Attribute, AttributeValue } from '../data/attribute';
-import type { PartType } from '../data/part-type';
+import type { PartType } from '../data/part';
 
 function attributeSearch(attributes: Attribute[], query: string): AttributeValue[] {
   // TODO: Improvements

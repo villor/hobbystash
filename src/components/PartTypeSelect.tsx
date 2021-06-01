@@ -2,8 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { createStyles, withStyles, WithStyles } from '@material-ui/core/styles';
-import type { PartType } from '../data/part-type';
-import { PartTypes } from '../data/part-type';
+import type { PartType } from '../data/part';
 
 const styles = createStyles({
   root: {
@@ -20,12 +19,14 @@ const styles = createStyles({
 });
 
 interface PartTypeSelectProps extends WithStyles<typeof styles> {
+  partTypes: PartType[];
   value: PartType | null;
   onChange: (partType: PartType | null) => void;
   autoFocus: boolean;
 }
 
 const PartTypeSelect: React.FunctionComponent<PartTypeSelectProps> = ({
+  partTypes,
   value,
   onChange,
   classes,
@@ -33,7 +34,7 @@ const PartTypeSelect: React.FunctionComponent<PartTypeSelectProps> = ({
 }) => (
   <Autocomplete
     className={classes.root}
-    options={PartTypes}
+    options={partTypes}
     classes={{
       option: classes.option,
     }}

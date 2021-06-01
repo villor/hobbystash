@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { createStyles, Paper, WithStyles, withStyles, TextField, Button } from '@material-ui/core';
 
-import type { PartType } from '../data/part-type';
+import type { PartType } from '../data/part';
 import type { AttributeValue } from '../data/attribute';
 import PartTypeSelect from './PartTypeSelect';
 import AttributeSelect from './AttributeSelect';
@@ -19,9 +19,11 @@ const styles = createStyles({
   },
 });
 
-type QuickPartProps = WithStyles<typeof styles>;
+interface QuickPartProps extends WithStyles<typeof styles> {
+  partTypes: PartType[];
+}
 
-const QuickPart: React.FunctionComponent<QuickPartProps> = ({ classes }) => {
+const QuickPart: React.FunctionComponent<QuickPartProps> = ({ partTypes, classes }) => {
   const [partType, setPartType] = useState<PartType | null>(null);
   const [attributeValues, setAttributeValues] = useState<AttributeValue[]>([]);
   const [count, setCount] = useState<number>(0);
@@ -50,7 +52,12 @@ const QuickPart: React.FunctionComponent<QuickPartProps> = ({ classes }) => {
   return (
     <form>
       <Paper className={classes.root}>
-        <PartTypeSelect value={partType} onChange={onPartTypeChange} autoFocus={true} />
+        <PartTypeSelect
+          partTypes={partTypes}
+          value={partType}
+          onChange={onPartTypeChange}
+          autoFocus={true}
+        />
         <AttributeSelect
           partType={partType}
           attributeValues={attributeValues}
