@@ -1,6 +1,6 @@
 import type { AValueType } from './';
 import { NumberValue } from './number';
-import { removeUnit } from '../../util/unit';
+import { removeUnit } from '../util/unit';
 
 export const FaradValueType: AValueType<FaradValue> = {
   id: 'f2f071a6-bdf7-40d0-a472-1351c5cd8609',
@@ -12,7 +12,7 @@ export const FaradValueType: AValueType<FaradValue> = {
       [/(u|µ|micro)? ?f(arads?)?/gi, 1e-6],
       [/m(illi)? ?f(arads?)?/gi, 1e-3],
     );
-    return n === null ? n : new FaradValue(n);
+    return n === null ? null : new FaradValue(n);
   },
 };
 

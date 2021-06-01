@@ -61,4 +61,6 @@ export const BuiltInAttributeIds = {
 
   // Capacitor
   capacitance: '2febe109-c9a7-4696-bc66-298f1dc25e3e',
+
+  bajs: 'jaksdjkosajdlas',
 };

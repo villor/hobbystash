@@ -1,0 +1,18 @@
+{
+  "name": "hobbystash-shared",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "villor <villor94@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "watch": "tsc --build --watch --preserveWatchOutput .",
+    "build": "tsc --build ."
+  },
+  "devDependencies": {
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

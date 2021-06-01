@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { createStyles, withStyles, WithStyles } from '@material-ui/core/styles';
-import type { PartType } from '../data/part';
+import type { PartType } from 'hobbystash-shared';
 
 const styles = createStyles({
   root: {

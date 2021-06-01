@@ -1,6 +1,6 @@
 import type { AValueType } from './';
 import { NumberValue } from './number';
-import { removeUnit } from '../../util/unit';
+import { removeUnit } from '../util/unit';
 
 export const OhmValueType: AValueType<OhmValue> = {
   id: 'e4d63822-832e-4294-b1ff-0d983364528e',
@@ -11,7 +11,7 @@ export const OhmValueType: AValueType<OhmValue> = {
       [/(kilo|k) ?(ohms?|Ω)?/gi, 1000],
       [/(mega|m) ?(ohms?|Ω)?/gi, 1000000],
     );
-    return n === null ? n : new OhmValue(n);
+    return n === null ? null : new OhmValue(n);
   },
 };
 

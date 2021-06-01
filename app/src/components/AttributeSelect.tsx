@@ -3,8 +3,7 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 
-import type { Attribute, AttributeValue } from '../data/attribute';
-import type { PartType } from '../data/part';
+import type { Attribute, AttributeValue, PartType } from 'hobbystash-shared';
 
 function attributeSearch(attributes: Attribute[], query: string): AttributeValue[] {
   // TODO: Improvements

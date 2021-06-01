@@ -8,8 +8,9 @@ import {
   StringValueType,
   AValueType,
   OhmValue,
-} from './data/attribute';
-import { PartType, BuiltInPartTypeIds } from './data/part';
+  PartType,
+  BuiltInPartTypeIds,
+} from 'hobbystash-shared';
 
 // Temporary seed data until we have a backend
 // TODO: Move to api stubs instead
@@ -34,7 +35,7 @@ const resistance = new Attribute(
   BuiltInAttributeIds.resistance,
   AValueTypeMap.get(OhmValueType.id) as AValueType,
   'Resistance',
-  [1, 10, 100, 1000, 1000000].map(x => new OhmValue(x))
+  [1, 10, 100, 1000, 1000000].map(x => new OhmValue(x)),
 );
 
 partTypes.push({

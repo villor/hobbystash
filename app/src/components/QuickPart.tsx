@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { createStyles, Paper, WithStyles, withStyles, TextField, Button } from '@material-ui/core';
 
-import type { PartType } from '../data/part';
-import type { AttributeValue } from '../data/attribute';
+import type { AttributeValue, PartType } from 'hobbystash-shared';
 import PartTypeSelect from './PartTypeSelect';
 import AttributeSelect from './AttributeSelect';
 
