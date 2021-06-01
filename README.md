@@ -1,2 +1,2 @@
 # HobbyStash
-[![Build HobbyStash](https://github.com/villor/hobbystash/actions/workflows/build.yml/badge.svg)](https://github.com/villor/hobbystash/actions/workflows/build.yml)
+[![CI](https://github.com/villor/hobbystash/actions/workflows/ci.yml/badge.svg)](https://github.com/villor/hobbystash/actions/workflows/ci.yml)

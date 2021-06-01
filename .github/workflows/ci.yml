@@ -1,4 +1,4 @@
-name: Build HobbyStash
+name: CI
 
 on:
   push:
